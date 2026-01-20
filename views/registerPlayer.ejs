@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Inicio</title>
+    <link rel="stylesheet" href="/stylesheets/common.css" />
+    <link rel="stylesheet" href="/stylesheets/index.css" />
+    <%- include('modules/linksHead') %>
+  </head>
+  <body class="text-info" style="font-family: 'Orbitron', sans-serif">
+    <header><%- include('modules/header.ejs') %></header>
+    <main>
+      <h1 class="text-center text-info fw-bold mt-4">Regístrate</h1>
+      <div class="d-flex justify-content-center">
+      <form
+        class=" form-w rounded-2 p-4"
+        action="/player/register"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <div class="mb-3">
+          <label for="validationDefault01" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="name" name="name" />
+        </div>
+        <div class="mb-3">
+          <label for="validationDefault02" class="form-label">Apellidos</label>
+          <input
+            type="text"
+            class="form-control"
+            id="last_name"
+            name="last_name"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="validationDefaultUsername" class="form-label"
+            >email</label
+          >
+          <div class="input-group">
+            <span class="input-group-text" id="inputGroupPrepend2">@</span>
+            <input
+              type="text"
+              class="form-control"
+              id="email"
+              name="email"
+              aria-describedby="inputGroupPrepend2"
+            />
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="validationDefault03" class="form-label">Contraseña</label>
+          <input
+            type="text"
+            class="form-control"
+            id="password"
+            name="password"
+          />
+        </div>
+        <div class="rmb-3">
+          <label for="validationDefault05" class="form-label"
+            >Preferencias</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            name="description"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="img" class="form-label img-form"><img src="/assets/image2.png"></label>
+          <input type="file" class="form-control" id="img" name="img" hidden />
+        </div>
+        <div class="mb-3">
+          <button class="btn btn-outline-info" type="submit">Registrar</button>
+          <button
+            class="btn btn-outline-info"
+            type="button"
+            onclick="history.go(-1)"
+          >
+            Atrás
+          </button>
+          <%= message %>
+        </div>
+      </form>
+    </div>
+    </main>
+    <%- include('modules/footer') %>
+  </body>
+</html>

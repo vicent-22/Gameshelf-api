@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../public/stylesheets/common.css" />
+    <link rel="stylesheet" href="../public/stylesheets/common.css" />
+    <%- include('modules/linksHead') %>
+
+    <title>Document</title>
+  </head>
+  <body class="text-info" style="font-family: 'Orbitron', sans-serif">
+    <%- include('modules/header.ejs') %> 
+    <h1 class="text-center text-info fw-bold mt-4">Detalles del juego</h1>
+    
+    <main class="mt-4">
+        <div>
+          <% games.forEach((elem)=>{ %>
+          <div class="info" style="width: 100%">
+            <img
+              src="/images/games/<%= elem.game_img %>"
+              class="card-img-top mt-4 info-game"
+              alt=""
+            />
+            <div
+              class="img-card card-body text-info  mt-5 "
+              style="font-family: 'Orbitron', sans-serif"
+            >
+              <h5 class="card-title info-game"><%= elem.name_game %></h5>
+
+              <p class="card-text info-game"><%= elem.plataform %></p>
+
+              <p class="card-text info-game"><%= elem.year_release %></p>
+
+              <% let rating = "" %> <% for (let i = 0; i < elem.starrating; i++)
+              {%> <% rating += '★' }%>
+              <p class="card-text info-game"><%= rating %></p>
+
+              <p class="card-text info-game">DESCRIPCIÓN:</p> 
+
+              <P class="card-text info-game" ><%= elem.review %></P>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </section>
+      <button
+            type="button"
+            class="btn btn-outline-info fw-bold mt-3"
+            onclick="history.go(-1)"
+          >Volver</button>
+    </main>
+    <%- include('modules/footer') %>
+  </body>
+</html>

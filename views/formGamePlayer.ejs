@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Inicio</title>
+    <link rel="stylesheet" href="/stylesheets/common.css" />
+    <%- include('modules/linksHead') %>
+  </head>
+  <body class="text-info" style="font-family: 'Orbitron', sans-serif">
+    <header><%- include('modules/header.ejs') %></header>
+    <main>
+      <h1 class="text-center text-info fw-bold mt-4">Añadir Juego</h1>
+      <div class="d-flex justify-content-center">
+        <form
+          class=" form-w rounded-2 p-4"
+          action="/game/addGamePlayer/<%= id_player %>"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="mb-3">
+            <label for="validationDefault01" class="form-label"
+              >Nombre del juego</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              name="name_game"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="validationDefault02" class="form-label"
+              >Plataforma</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="plataform"
+              name="plataform"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="validationDefaultUsername" class="form-label"
+              >Año</label
+            >
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                id="year"
+                name="year_release"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="validationDefault03" class="form-label"
+              >Valoración</label
+            >
+            <select name="starrating" id="">
+              <option selected disabled value=""></option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="validationDefault05" class="form-label"
+              >Description</label
+            >
+            <input type="text" class="form-control" id="review" name="review" />
+          </div>
+          <div class="mb-3">
+            <label for="img" class="form-label img-form" 
+              ><img src="/assets/image2.png" alt=""
+            /></label>
+            <input type="file" class="form-control" id="img" name="img" hidden />
+          </div>
+          <div class="mb-3">
+            <button class="btn btn-outline-info fw-bold" type="submit">
+              Aceptar
+            </button>
+            <button
+              class="btn btn-outline-info fw-bold"
+              type="button"
+              onclick="history.go(-1)"
+            >
+              Atrás
+            </button>
+            <%= message %>
+          </div>
+        </form>
+      </div>
+    </main>
+    <%- include('modules/footer') %>
+  </body>
+</html>

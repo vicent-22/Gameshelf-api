@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/stylesheets/common.css">
+    <%- include('modules/linksHead') %>
+    <title>Registro</title>
+  </head>
+  <body class=" text-info" style="font-family: 'Orbitron', sans-serif;">
+    <%- include('modules/header.ejs') %>
+    <main>
+      <h1 class="text-center text-info fw-bold mt-4">Añade un juego a un usuario</h1>
+
+      <div class="d-flex justify-content-center">
+        <form
+          class="form-w  rounded-2 p-4"
+          action="/game/addNewGame"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre Obra</label>
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              name="id_player"
+            >
+              <option selected disabled value="">Elige un usuario</option>
+
+              <% player.forEach((elem)=>{ %>
+              <option value="<%= elem.id_player %>">
+                <%= `${elem.name} ${elem.last_name} ` %>
+              </option>
+              <% }) %>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre del juego</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name_game"
+              aria-describedby="ObraHelp"
+              name="name_game"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="estilo" class="form-label">Plataforma</label>
+            <input
+              type="text"
+              class="form-control"
+              id="plataform"
+              name="plataform"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="estilo" class="form-label">Valoración</label>
+            <select name="starrating" id="">
+            <option selected disabled value=""></option>
+            <option value="1"> 1 </option>
+            <option value="2"> 2 </option>
+            <option value="3"> 3 </option>
+            <option value="4"> 4 </option>
+            <option value="5"> 5</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="estilo" class="form-label">Año de salida</label>
+            <input
+              type="text"
+              class="form-control"
+              id="year_release"
+              name="year_release"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="estilo" class="form-label">Descripción</label>
+            <input type="text" class="form-control" id="review" name="review" />
+          </div>
+
+          <div class="mb-3">
+            <label for="img" class="form-label img-form"><img src="/assets/image2.png"></label>
+            <input
+              type="file"
+              class="form-control"
+              id="img"
+              name="img"
+              hidden
+            />
+          </div>
+
+          <p class="msg-allert"><%= message %> </p>
+
+          <button type="submit" class="btn btn-outline-info fw-bold">Aceptar</button>
+          <button
+            type="button"
+            class="btn btn-outline-info fw-bold"
+            onclick="history.go(-1)"
+          >Cancelar</button>
+        </form>
+      </div>
+    </main>
+    <%- include('modules/footer') %>
+  </body>
+</html>

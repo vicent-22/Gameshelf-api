@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/stylesheets/common.css" /> 
+    <link rel="stylesheet" href="/stylesheets/index.css" />
+    <%- include('modules/linksHead') %>
+   <title>Registro</title>
+  </head>
+  <body class=" text-info" style="font-family: 'Orbitron', sans-serif">
+    <%- include('modules/header.ejs') %>
+    <main>
+      <h1 class="text-center text-info fw-bold mt-4">
+        Formulario edicion de juego
+      </h1>
+      <div class="d-flex justify-content-center">
+        <form
+          class="w-25 border border-dark border-2 rounded-2 p-4"
+          action="/game/editGame/<%= gameEditar.id_game %>/<%= gameEditar.id_player %>"
+          method="post"
+        >
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre del juego</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nombre"
+              aria-describedby="gameHelp"
+              name="name_game"
+              value="<%= gameEditar.name_game %>"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="estilo" class="form-label">review</label>
+            <input
+              type="text"
+              class="form-control"
+              id="review"
+              name="review"
+              value="<%= gameEditar.review %>"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="estilo" class="form-label">Valoración</label>
+
+            <select name="starrating" id="">
+              <option selected value="<%= gameEditar.starrating %>">
+                <%= gameEditar.starrating %>
+              </option>
+              <option value="1">
+                <%= gameEditar.starrating == 1 ? '' : '' %> 1
+              </option>
+              <option value="2">
+                <%= gameEditar.starrating == 2 ? '' : '' %> 2
+              </option>
+              <option value="3">
+                <%= gameEditar.starrating == 3 ? '' : '' %> 3
+              </option>
+              <option value="4">
+                <%= gameEditar.starrating == 4 ? '' : '' %> 4
+              </option>
+              <option value="5">
+                <%= gameEditar.starrating == 5 ? '' : '' %> 5
+              </option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="estilo" class="form-label">plataforma</label>
+            <input
+              type="text"
+              class="form-control"
+              id="plataform"
+              name="plataform"
+              value="<%= gameEditar.plataform %>"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="estilo" class="form-label">Año</label>
+            <input
+              type="text"
+              class="form-control"
+              id="year_release"
+              name="year_release"
+              value="<%= gameEditar.year_release %>"
+            />
+          </div>
+
+          <p class="msg-allert"><%= message %></p>
+
+          <button type="submit" class="btn btn-outline-info fw-bold">
+            Aceptar
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-info fw-bold"
+            onclick="history.go(-1)"
+          >
+            Cancelar
+          </button>
+        </form>
+      </div>
+    </main>
+    <%- include('modules/footer') %>
+  </body>
+</html>

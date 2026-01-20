@@ -1,0 +1,193 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+header{
+  background: linear-gradient(to bottom, #000000, #330000);
+  background-size: 500px;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.icon-home {
+  margin-inline-start: 1rem;
+}
+
+
+
+body {
+  background-image: 
+  linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+  url("../assets/ladrillos2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.home {
+  border: 1px solid #0DC7ED;
+  border-radius: 45%;
+}
+
+main {
+  padding: 50px;
+  min-height: calc(100vh - 216px);
+}
+
+.img-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.img-card .btn-profile:hover {
+  background-color: #1aa9c0;
+  color: black;
+}
+
+.user {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user img {
+  border-radius: 20px;
+}
+
+.section2 {
+  margin-block-start: 3rem;
+  margin-block-end: 1rem;
+}
+
+.section2 h2 {
+  border-bottom: 1px solid;
+  
+}
+
+.form-w {
+  width: 25%;
+}
+
+.img-form {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .form-w {
+    padding: 1.5rem;
+    width: 90%;
+  }
+
+  .img-user {
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.1;
+    text-align: center;
+  }
+
+  .card {
+    max-width: 90%;
+    margin: auto;
+  }
+
+  .btn {
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  .info {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .info-game {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  input,
+  select {
+    font-size: 0.7rem;
+  }
+
+  form {
+    padding: 1rem;
+  }
+
+  .user h2,
+  .user h3 {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .card-text {
+    font-size: 0.8rem;
+  }
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .user img {
+    width: 70%;
+  }
+}
+
+footer {
+  margin-block-start: 3rem;
+  background-color: black;
+  background-size: 500px;
+  width: 100%;
+}
+
+.info-game {
+  width: 500px;
+  margin-block-end: 2.5rem;
+  border-radius: 30px;
+  text-align: center;
+
+}
+
+.title-game {
+  padding: 20px;
+}
+
+
+.info {
+  display: flex;
+  gap: 10rem;
+}
+
+footer div{
+margin: 0 auto;
+ margin-block-start: 3rem;
+  background-color: black;
+}
+
+.add-center {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.addGameUser {
+  width: 300px;
+}
+
+.btn-up{
+  margin-block-start: 5rem;
+}

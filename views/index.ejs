@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Inicio</title>
+    <link rel="stylesheet" href="/stylesheets/common.css">
+    <%- include('modules/linksHead') %>
+  </head>
+  <body class=" text-info" style="font-family: 'Orbitron', sans-serif">
+    <header>
+      <%- include('modules/header.ejs') %>
+    </header>
+    <main>
+      <h1 class="text-center text-info fw-bold mt-2 mb-4">
+        BIENVENIDO A LA RED DEL JUGADOR
+      </h1>
+      <h3 class="">Jugadores registrados:</h3>
+
+      <div class="container">
+        <div class="row g-4 justify-content-center">
+          <% openPlayer.forEach((elem)=>{ %>
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card img-card bg-transparent  shadow-lg ">
+              <img
+                src="/images/usuarios/<%= elem.img?elem.img: 'user_por_defecto.png' %>"
+                class="card-img-top "
+                alt=""
+              />
+              <div class="card-body text-center">
+                <h5 class="card-title text-info fw-bold">
+                  <%= elem.name %> <%= elem.last_name %>
+                </h5>
+                <a
+                  href="/player/usuario/<%= elem.id_player %>"
+                  class="btn btn-outline-info fw-bold w-100"
+                  >Ver perfil de <%= elem.name %></a
+                >
+              </div>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+      
+      <div class="add-center"><a class=" addGameUser btn btn-outline-info" href="/game/addNewGame">Agregar juego a un usuario</a></div>
+      <a class="btn-up btn btn-outline-info" href="/">Subir</a>
+    </main>
+    <%- include('modules/footer') %>
+  </body>
+</html>

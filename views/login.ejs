@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Inicio</title>
+    <link rel="stylesheet" href="/stylesheets/common.css">
+    <link rel="stylesheet" href="/stylesheets/index.css">
+    <%- include('modules/linksHead') %>
+  </head>
+  <body class=" text-info" style="font-family: 'Orbitron', sans-serif;">
+   <header>
+    <%- include('modules/header.ejs') %>
+  </header>
+  <main>
+    <h1 class="text-center text-info fw-bold mt-4">Introduce tus datos</h1>
+    <div class="d-flex justify-content-center">
+      <form class=" form-w  rounded-2 p-4" action="/player/login" method="post">
+  <div class="mb-3">
+    <label for="validationDefaultUsername" class="form-label">email</label>
+      <input type="text" class="form-control" id="email" name="email"  aria-describedby="inputGroupPrepend2" >
+    </div>
+  <div class="mb-3">
+    <label for="validationDefault03" class="form-label">Password</label>
+    <input type="text" class="form-control" id="password" name="password" >
+  </div>
+  <div class="mb-3">
+    <button class="btn btn-outline-info fw-bold" type="submit">Registrar</button>
+    <button class="btn btn-outline-info fw-bold" type="button" onclick="history.go(-1)">Atrás</button>
+   <%= message %>
+  </div>
+</form>
+</div>
+  </main>
+<%- include('modules/footer') %>
+  </body>
+</html>
