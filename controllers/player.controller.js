@@ -19,7 +19,7 @@ class PlayerController {
           throw err;
         } else {
           let sql = `INSERT INTO player (name, last_name, email, password, description, img) VALUES ("${name}","${last_name}","${email}","${hash}","${description}","${img}")`;
-          connection.query(sql, (err, result) => {
+          pool.query(sql, (err, result) => {
             if (err) {
               if (err.errno == 1062) {
                 res.render('registerPlayer', {
@@ -38,7 +38,7 @@ class PlayerController {
   };
   openPlayer = (req, res) => {
     let sql = `SELECT * FROM player`;
-    connection.query(sql, (err, result) => {
+    pool.query(sql, (err, result) => {
       if (err) {
         throw err;
       } else {
@@ -52,7 +52,7 @@ class PlayerController {
     const {id} = req.params;
     let sql = `SELECT player.*, game.name_game, game.plataform, game.review, game.id_game, game.starrating, game.year_release, game.game_img FROM player LEFT JOIN game ON player.id_player = game.id_player AND game.game_is_del = 0 WHERE player.player_is_del = 0 AND player.id_player = ?`;
     let values = [id];
-    connection.query(sql, values, (err, result) => {
+    pool.query(sql, values, (err, result) => {
       if (err) {
         throw err;
       } else {
@@ -97,7 +97,7 @@ class PlayerController {
 
     let sql = `SELECT * FROM player where email = ?`;
     let values = [email];
-    connection.query(sql, values, (err, result) => {
+    pool.query(sql, values, (err, result) => {
       if (err) {
         throw err;
       } else {
