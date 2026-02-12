@@ -1,4 +1,4 @@
-const connection = require('../config/db');
+const pool = require('../config/db');
 
 class GamesControllers {
   openFormGamePlayer = (req, res) => {
@@ -31,7 +31,7 @@ class GamesControllers {
         id_player,
         req.file.filename,
       ];
-      connection.query(sql, values, (err, result) => {
+      pool.query(sql, values, (err, result) => {
         if (err) {
           throw err;
         } else {
@@ -43,7 +43,7 @@ class GamesControllers {
 
   addGameInicio = (req, res) => {
     let sql = `SELECT id_player, name, last_name FROM player`;
-    connection.query(sql, (err, result) => {
+    pool.query(sql, (err, result) => {
       if (err) {
         throw err;
       } else {
@@ -57,7 +57,7 @@ class GamesControllers {
 
     if (!id_player || !name_game || !plataform || !year_release || !starrating || !review ||!req.body) {
       let sql = `SELECT id_player, name, last_name FROM player`;
-      connection.query(sql, (err, result) => {
+      pool.query(sql, (err, result) => {
         if (err) {
           throw err;
         } else {
@@ -66,7 +66,7 @@ class GamesControllers {
       });
     } else if (!req.file){
       let sql = `SELECT id_player, name, last_name FROM player`;
-      connection.query(sql, (err, result) => {
+      pool.query(sql, (err, result) => {
         if (err) {
           throw err;
         } else {
@@ -76,7 +76,7 @@ class GamesControllers {
     }else{
        let sql = `INSERT INTO game (id_player, name_game, plataform, year_release, starrating, review, game_img) VALUES (?,?,?,?,?,?,?)`
       let values = [id_player, name_game, plataform, year_release, starrating, review, req.file.filename]
-      connection.query(sql, values, (err, result)=>{
+      pool.query(sql, values, (err, result)=>{
         if(err){
           throw err
         }else{
@@ -89,7 +89,7 @@ class GamesControllers {
       const {id_game} = req.params;
       let sql = 'SELECT * FROM game WHERE id_game = ?'
       let values = [id_game]
-      connection.query(sql, values, (err, result)=>{
+      pool.query(sql, values, (err, result)=>{
         if(err){
           throw err
         }else{          
@@ -105,7 +105,7 @@ class GamesControllers {
       }else{
         let sql = 'UPDATE game SET name_game =?, starrating=?, plataform=?, year_release=?, review=? WHERE id_game=?'
         let values = [name_game, starrating, plataform, year_release, review, id_game]
-        connection.query(sql, values, (err, result)=>{
+        pool.query(sql, values, (err, result)=>{
         if(err){
           throw err
         }else{
@@ -118,7 +118,7 @@ class GamesControllers {
     deleteGame = (req, res)=>{
       const {id_game, id_player} = req.params;
         let sql = 'DELETE FROM game WHERE id_game = ?'
-        connection.query(sql, [id_game], (err, result)=>{
+        pool.query(sql, [id_game], (err, result)=>{
             if(err){
                 throw err;
             }else{
@@ -131,7 +131,7 @@ class GamesControllers {
       const {id_game} = req.params;
       let sql = 'SELECT * FROM game WHERE id_game = ?'
       let values = [id_game]
-      connection.query(sql, values, (err, result)=>{
+      pool.query(sql, values, (err, result)=>{
         if(err){
           throw err
         }else{          
