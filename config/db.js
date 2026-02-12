@@ -1,6 +1,13 @@
-const mysql = require("mysql2");
+const mysql = require('mysql2');
 
-const pool = mysql.createPool(process.env.MYSQL_PUBLIC_URL);
+const connection = mysql.createConnection(process.env.MYSQL_PUBLIC_URL);
 
-module.exports = pool;
+connection.connect(err => {
+  if (err) {
+    console.error('Error DB:', err);
+  } else {
+    console.log('DB conectada');
+  }
+});
 
+module.exports = connection;
