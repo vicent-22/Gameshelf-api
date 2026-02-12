@@ -1,4 +1,4 @@
-const connection = require('../config/db');
+const pool = require('../config/db');
 const bcrypt = require('bcrypt');
 
 class PlayerController {
